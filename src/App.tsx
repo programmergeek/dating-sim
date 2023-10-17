@@ -1,22 +1,57 @@
 import { useState } from "react";
 import "./App.css";
-import { Card, CardContent } from "./components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "./components/ui/card";
 import { Button } from "./components/ui/button";
 import { Check, X, Info } from "lucide-react";
 import { Progress } from "./components/ui/progress";
 
 function App() {
   const [profile, updateProfile] = useState<number>(0);
+  const [showRules, updateShowRules] = useState<boolean>(true);
 
   const nextProfile = () => {
     updateProfile((prev) => prev + 1);
   };
 
+  const hideRules = () => {
+    updateShowRules(false);
+  };
+
   return (
     <>
       <div className="grid min-h-screen place-items-center align-middle">
-        <Progress value={(profile / 10) * 100} className="absolute top-0" />
-        <Card className="w-11/12 sm:w-10/12 md:w-7/12 lg:w-4/12">
+        <div
+          className="absolute z-10 h-screen w-screen bg-[rgba(0,0,0,0.2)] saturate-150 backdrop-blur-xl"
+          style={{ display: showRules ? "block" : "none" }}
+        ></div>
+        <div
+          className="absolute left-1/2 top-1/2 z-20 grid w-screen -translate-x-1/2 -translate-y-1/2 place-items-center"
+          style={{ display: showRules ? "grid" : "none" }}
+        >
+          <Card className="w-10/12 shadow-xl sm:w-8/12 md:w-3/5">
+            <CardHeader>
+              <span className="text-4xl">Rules</span>
+            </CardHeader>
+            <CardContent>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Recusandae ad veritatis quas tenetur velit alias dolore
+              praesentium, asperiores animi at perspiciatis esse officiis
+              accusantium aperiam cumque, blanditiis nemo quia ducimus.
+            </CardContent>
+            <CardFooter>
+              <Button onClick={hideRules} className="w-full bg-orange-300">
+                I understand
+              </Button>
+            </CardFooter>
+          </Card>
+        </div>
+        <Progress value={(profile / 10) * 100} className="absolute top-0 z-0" />
+        <Card className="w-11/12 sm:w-10/12 md:w-7/12 lg:w-5/12">
           <CardContent className="px-0 text-start">
             <div className="rounded-md">
               <img
