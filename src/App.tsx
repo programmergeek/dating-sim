@@ -9,6 +9,13 @@ import {
 import { Button } from "./components/ui/button";
 import { Check, X, Info } from "lucide-react";
 import { Progress } from "./components/ui/progress";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTrigger,
+} from "./components/ui/dialog";
+import { ScrollArea } from "./components/ui/scroll-area";
 
 function App() {
   const [profile, updateProfile] = useState<number>(0);
@@ -69,9 +76,55 @@ function App() {
                 mollitia, praesentium nihil in iste soluta aut consequuntur
                 optio distinctio nulla beatae tempore?{" "}
               </p>
-              <Button className="flex gap-3">
-                More info <Info />
-              </Button>
+              <Dialog>
+                <DialogTrigger className="w-full">
+                  <Button className="flex w-full gap-3">
+                    More info <Info />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader className="grid grid-cols-2">
+                    <span className="text-2xl">Profile Name Bio</span>
+                  </DialogHeader>
+                  <ScrollArea className="h-[500px] w-full px-2">
+                    Orci varius natoque penatibus et magnis dis parturient
+                    montes, nascetur ridiculus mus. Curabitur sem sapien,
+                    ultrices sit amet sem sit amet, ullamcorper faucibus massa.
+                    Duis at viverra nisi. Phasellus volutpat, mi non elementum
+                    elementum, nulla metus volutpat mauris, ultrices ultricies
+                    ante mi euismod magna. Donec eget sodales tortor. Nulla quis
+                    tempus libero. Praesent at risus sapien. Donec porta, metus
+                    eget condimentum posuere, augue eros ultricies tellus, at
+                    sagittis lacus ipsum ac orci. Duis dui felis, sagittis
+                    fermentum consectetur ac, lacinia ut ipsum. Etiam
+                    pellentesque libero at dapibus laoreet. Vivamus arcu lorem,
+                    sagittis ac pulvinar quis, hendrerit quis elit. Donec in
+                    nibh eu sapien posuere faucibus ac sit amet arcu. Vestibulum
+                    mauris metus, facilisis suscipit neque eu, commodo aliquet
+                    risus. Sed sit amet posuere nulla, eu rhoncus libero.
+                    Vivamus dapibus, libero sit amet vulputate ornare, quam orci
+                    mollis urna, eget tincidunt massa nunc nec dolor. Etiam in
+                    posuere odio. Aliquam fermentum nibh ut tempus porta. Morbi
+                    et diam ex. In ullamcorper placerat lorem in auctor. Aliquam
+                    hendrerit rhoncus gravida. Aliquam mattis sit amet purus
+                    ultricies sagittis. Praesent eleifend pulvinar elementum.
+                    Vestibulum varius euismod elit non ullamcorper. Suspendisse
+                    massa massa, imperdiet id massa vel, venenatis lobortis
+                    neque. Praesent sapien orci, vestibulum at nisi vitae,
+                    aliquet posuere lorem. Duis faucibus metus lobortis erat
+                    lobortis, a mattis urna interdum. Fusce at laoreet magna.
+                    Sed aliquam porttitor lorem, id aliquam metus consequat
+                    eleifend. Aliquam condimentum justo in sodales fermentum.
+                    Morbi libero turpis, consectetur quis mauris eget, porttitor
+                    bibendum est. Mauris eget sapien vulputate, suscipit mauris
+                    in, tincidunt augue. Phasellus quis enim ut turpis tempus
+                    aliquam. Maecenas semper orci id lorem sollicitudin, vitae
+                    lobortis justo laoreet. Mauris sed rutrum purus. Proin
+                    fermentum ipsum mi. Phasellus arcu purus, egestas vitae
+                    dolor eu, auctor maximus velit.
+                  </ScrollArea>
+                </DialogContent>
+              </Dialog>
               <div className="flex gap-3">
                 <Button
                   className="flex w-full gap-3 bg-red-500 hover:bg-red-600"
