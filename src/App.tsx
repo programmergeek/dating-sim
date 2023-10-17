@@ -3,6 +3,7 @@ import "./App.css";
 import { Card, CardContent } from "./components/ui/card";
 import { Button } from "./components/ui/button";
 import { Check, X, Info } from "lucide-react";
+import { Progress } from "./components/ui/progress";
 
 function App() {
   const [profile, updateProfile] = useState<number>(0);
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
       <div className="grid min-h-screen place-items-center align-middle">
+        <Progress value={(profile / 10) * 100} className="absolute top-0" />
         <Card className="w-11/12 sm:w-10/12 md:w-7/12 lg:w-4/12">
           <CardContent className="px-0 text-start">
             <div className="rounded-md">
