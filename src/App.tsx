@@ -21,7 +21,7 @@ import * as Profiles from "@/assets/profiles.json";
 function App() {
   const [profileNum, updateProfileNum] = useState<number>(0);
   const [showRules, updateShowRules] = useState<boolean>(true);
-  const [profile, updateProfile] = useState(Profiles.profiles);
+  const [profile] = useState(Profiles.profiles);
 
   const nextProfile = () => {
     updateProfileNum((prev) => prev + 1);
