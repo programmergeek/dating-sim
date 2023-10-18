@@ -1,0 +1,60 @@
+{
+  "profiles": [
+    {
+      "name": "Jake Sekei",
+      "age": 33,
+      "dp": "https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&q=80&w=1469&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "bio": "I'm a passionate movie lover with an appreciation for the intricacies of storytelling. The magic of cinema lies not just in the visuals but in the transformation of characters. I believe in the power of redemption and that people can change if given the chance. Show me your favorite movie, and let's delve into the characters' journeys, discussing how they overcame their flaws and challenges to find redemption. This reflects my belief that everyone deserves a second chance to reveal their true selves. Life, like a well-crafted film, has its twists and turns, and it's all about embracing the narrative. Will you be the co-star in my story of second chances?",
+      "category": "Bad"
+    },
+    {
+      "name": "Alex Brian",
+      "age": 23,
+      "dp": "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "bio": "I'm on a quest to find that special connection, one that transcends superficial interactions. My belief is that the best relationships are built on trust, genuine communication, and shared values. As I embark on this journey, I'm looking for someone who's ready to explore the uncharted territory of a real, fulfilling connection. I'm seeking someone who's down-to-earth, caring, and knows the value of a good laugh. To me, it's about mutual respect, supporting each other's dreams, and creating a partnership filled with love and laughter. If you're on the same page and ready for a meaningful relationship, swipe right. But if you're here for games, ghosting, or drama, maybe it's best to keep swiping. Let's create something beautiful and genuine, together.",
+      "category": "Good"
+    },
+    {
+      "name": "Alice Davis",
+      "age": 21,
+      "dp": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "bio": "I’m a sucker for a great conversation, and I also love to talk about anything and everything. The art of communication is like a dance, where two individuals move in harmony. I'm an open book, always ready to explore new topics and engage in lively discussions. My love for conversations is a reflection of my curious and inquisitive nature. There's an entire world within each person, and I'm eager to uncover the depths of your world. From the everyday to the extraordinary, let's chat about everything under the sun. Whether it's the meaning of life or the latest Netflix series, I'm all ears. Are you ready for an adventure in words and thoughts?",
+      "category": "Bad"
+    },
+    {
+      "name": "John Melville",
+      "age": 30,
+      "dp": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "bio": "I am the embodiment of perfection! At 30, I'm a successful actor with an Oscar on my shelf. In my free time, you'll find me sipping champagne at exclusive parties, traveling to exotic destinations, and indulging in luxury cars, fine dining, and designer fashion. On the surface, it might seem like I've never had a bad day in my life. However, beneath the glitz and glamour, I've faced my own share of challenges and insecurities. Life's a breeze when you're this flawless on screen, but off-screen, I'm on a constant journey of self-improvement and personal growth. Looking for someone who can keep up with my level of excellence and be a part of both the glamour and the reality of my life.",
+      "category": "Bad"
+    },
+    {
+      "name": "Tim Dean",
+      "age": 28,
+      "dp": "https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?auto=format&fit=crop&q=80&w=1506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "bio": "I am a 28-year-old boxing coach who knows the importance of discipline and hard work. I find beauty in the dedication and discipline it takes to reach one's aspirations. My hobbies include extreme sports and martial arts, where the process of growth and learning is ever-present. I'm looking for someone who shares the drive for bettering themselves and is ready to join in this journey we call life. The path of self-improvement is my chosen road, and I'm searching for a partner who is equally dedicated to the pursuit of their ambitions, no matter where that path may lead. Will you be the one to take this journey with me?",
+      "category": "Bad"
+    },
+    {
+      "name": "Betty Tennyson",
+      "age": 25,
+      "dp": "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "bio": "A hopeless romantic, a theater enthusiast, and a lover of life. At 25, I enjoy painting, hiking, and indulging in cozy bookshops. I'm not perfect, but I'm real and ready to love deeply. Let's write our love story together! I'm into long walks on the beach, starry nights, and cuddling with a good movie. Life is a canvas, and I'm eager to paint it with vibrant memories and shared adventures. Whether it's stargazing under the night sky or discovering hidden trails in the wilderness, I'm looking for someone who shares the passion for creating beautiful moments together.",
+      "category": "Good"
+    },
+    {
+      "name": "Sean Isaacs",
+      "age": 30,
+      "dp": "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "bio": "I'm a 30-year-old self-employed entrepreneur with a passion for both my work and my personal life. I believe in the power of chasing dreams and creating your own path. Running my own business has allowed me to embrace creativity, independence, and a sense of adventure. I'm looking for a companion with whom I may share my next adventure with. Someone who I can be with through the good and bad times, supporting me while I support them. Life is a rollercoaster, and I'm ready for the ups and downs, as long as we face them together.",
+      "category": "Bad"
+    },
+    {
+      "name": "Rachel Rachel",
+      "age": 25,
+      "dp": "https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?auto=format&fit=crop&q=80&w=1453&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "bio": "Greetings! I am a 25-year-old lover of country music and all things surreal. It's been a while since I've ventured into the world of dating, and I'm excited to see what the future holds. Life's journey has taken me on many paths, but now I'm ready to explore the path of love and companionship. Each step we take in life is an opportunity to uncover the unknown and embrace the beauty of the unexpected. I'm looking for someone who's ready to join me on this journey of discovery and share in the enchantment of life's twists and turns.",
+      "category": "Good"
+    }
+  ]
+}

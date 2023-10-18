@@ -16,13 +16,15 @@ import {
   DialogTrigger,
 } from "./components/ui/dialog";
 import { ScrollArea } from "./components/ui/scroll-area";
+import * as Profiles from "@/assets/profiles.json";
 
 function App() {
-  const [profile, updateProfile] = useState<number>(0);
+  const [profileNum, updateProfileNum] = useState<number>(0);
   const [showRules, updateShowRules] = useState<boolean>(true);
+  const [profile, updateProfile] = useState(Profiles.profiles);
 
   const nextProfile = () => {
-    updateProfile((prev) => prev + 1);
+    updateProfileNum((prev) => prev + 1);
   };
 
   const hideRules = () => {
@@ -57,25 +59,22 @@ function App() {
             </CardFooter>
           </Card>
         </div>
-        <Progress value={(profile / 10) * 100} className="absolute top-0 z-0" />
+        <Progress
+          value={(profileNum / 10) * 100}
+          className="absolute top-0 z-0"
+        />
         <Card className="w-11/12 sm:w-10/12 md:w-7/12 lg:w-5/12">
           <CardContent className="px-0 text-start">
             <div className="rounded-md">
               <img
-                src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
+                src={profile[profileNum].dp}
                 alt="profile picture"
                 className="h-auto rounded-t-md"
               />
             </div>
             <div className="flex flex-col gap-3 px-5 md:px-10">
-              <h3 className="pt-5 text-3xl">Profile Name</h3>
-              <p>
-                {" "}
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae
-                labore saepe magni voluptatibus rerum qui ullam, cumque,
-                mollitia, praesentium nihil in iste soluta aut consequuntur
-                optio distinctio nulla beatae tempore?{" "}
-              </p>
+              <h3 className="pt-5 text-3xl"> {profile[profileNum].name} </h3>
+              <p>{profile[profileNum].bio.substring(0, 100)}...</p>
               <Dialog>
                 <DialogTrigger className="w-full">
                   <Button className="flex w-full gap-3">
@@ -84,44 +83,12 @@ function App() {
                 </DialogTrigger>
                 <DialogContent>
                   <DialogHeader className="grid grid-cols-2">
-                    <span className="text-2xl">Profile Name Bio</span>
+                    <span className="text-2xl">
+                      {profile[profileNum].name}'s Bio
+                    </span>
                   </DialogHeader>
                   <ScrollArea className="h-[500px] w-full px-2">
-                    Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Curabitur sem sapien,
-                    ultrices sit amet sem sit amet, ullamcorper faucibus massa.
-                    Duis at viverra nisi. Phasellus volutpat, mi non elementum
-                    elementum, nulla metus volutpat mauris, ultrices ultricies
-                    ante mi euismod magna. Donec eget sodales tortor. Nulla quis
-                    tempus libero. Praesent at risus sapien. Donec porta, metus
-                    eget condimentum posuere, augue eros ultricies tellus, at
-                    sagittis lacus ipsum ac orci. Duis dui felis, sagittis
-                    fermentum consectetur ac, lacinia ut ipsum. Etiam
-                    pellentesque libero at dapibus laoreet. Vivamus arcu lorem,
-                    sagittis ac pulvinar quis, hendrerit quis elit. Donec in
-                    nibh eu sapien posuere faucibus ac sit amet arcu. Vestibulum
-                    mauris metus, facilisis suscipit neque eu, commodo aliquet
-                    risus. Sed sit amet posuere nulla, eu rhoncus libero.
-                    Vivamus dapibus, libero sit amet vulputate ornare, quam orci
-                    mollis urna, eget tincidunt massa nunc nec dolor. Etiam in
-                    posuere odio. Aliquam fermentum nibh ut tempus porta. Morbi
-                    et diam ex. In ullamcorper placerat lorem in auctor. Aliquam
-                    hendrerit rhoncus gravida. Aliquam mattis sit amet purus
-                    ultricies sagittis. Praesent eleifend pulvinar elementum.
-                    Vestibulum varius euismod elit non ullamcorper. Suspendisse
-                    massa massa, imperdiet id massa vel, venenatis lobortis
-                    neque. Praesent sapien orci, vestibulum at nisi vitae,
-                    aliquet posuere lorem. Duis faucibus metus lobortis erat
-                    lobortis, a mattis urna interdum. Fusce at laoreet magna.
-                    Sed aliquam porttitor lorem, id aliquam metus consequat
-                    eleifend. Aliquam condimentum justo in sodales fermentum.
-                    Morbi libero turpis, consectetur quis mauris eget, porttitor
-                    bibendum est. Mauris eget sapien vulputate, suscipit mauris
-                    in, tincidunt augue. Phasellus quis enim ut turpis tempus
-                    aliquam. Maecenas semper orci id lorem sollicitudin, vitae
-                    lobortis justo laoreet. Mauris sed rutrum purus. Proin
-                    fermentum ipsum mi. Phasellus arcu purus, egestas vitae
-                    dolor eu, auctor maximus velit.
+                    {profile[profileNum].bio}
                   </ScrollArea>
                 </DialogContent>
               </Dialog>
