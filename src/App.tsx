@@ -17,6 +17,7 @@ import {
 } from "./components/ui/dialog";
 import { ScrollArea } from "./components/ui/scroll-area";
 import * as Profiles from "@/assets/profiles.json";
+import { supabaseClient } from "@/lib/supabase";
 
 function App() {
   const [profileNum, updateProfileNum] = useState<number>(0);
@@ -29,6 +30,18 @@ function App() {
 
   const hideRules = () => {
     updateShowRules(false);
+  };
+
+  const decide = async (
+    character: string,
+    match: boolean,
+    category: "Good" | "Bad",
+  ) => {
+    await supabaseClient.from("responses").insert({
+      character,
+      category,
+      match,
+    });
   };
 
   return (
@@ -60,7 +73,7 @@ function App() {
           </Card>
         </div>
         <Progress
-          value={(profileNum / 10) * 100}
+          value={(profileNum / profile.length) * 100}
           className="absolute top-0 z-0"
         />
         <Card className="w-11/12 sm:w-10/12 md:w-7/12 lg:w-5/12">
@@ -95,13 +108,27 @@ function App() {
               <div className="flex gap-3">
                 <Button
                   className="flex w-full gap-3 bg-red-500 hover:bg-red-600"
-                  onClick={() => nextProfile()}
+                  onClick={() => {
+                    decide(
+                      profile[profileNum].name,
+                      false,
+                      profile[profileNum].category as "Good" | "Bad",
+                    );
+                    nextProfile();
+                  }}
                 >
                   Reject <X />
                 </Button>
                 <Button
                   className="flex w-full gap-3 bg-green-500 hover:bg-green-600"
-                  onClick={() => nextProfile()}
+                  onClick={() => {
+                    decide(
+                      profile[profileNum].name,
+                      true,
+                      profile[profileNum].category as "Good" | "Bad",
+                    );
+                    nextProfile();
+                  }}
                 >
                   Match <Check />
                 </Button>
