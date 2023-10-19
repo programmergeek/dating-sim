@@ -11,6 +11,7 @@ import { Check, X, Info } from "lucide-react";
 import { Progress } from "./components/ui/progress";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogHeader,
   DialogTrigger,
@@ -212,6 +213,9 @@ function App() {
                   <ScrollArea className="h-[500px] w-full px-2">
                     {profile[profileNum].bio}
                   </ScrollArea>
+                  <DialogClose>
+                    <Button className="w-full">Close</Button>
+                  </DialogClose>
                 </DialogContent>
               </Dialog>
               <div className="flex gap-3">
