@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import {
   Card,
@@ -18,14 +18,42 @@ import {
 import { ScrollArea } from "./components/ui/scroll-area";
 import * as Profiles from "@/assets/profiles.json";
 import { supabaseClient } from "@/lib/supabase";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "./components/ui/form";
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "./components/ui/input";
+import { RadioGroup, RadioGroupItem } from "./components/ui/radio-group";
+
+const formSchema = z.object({
+  gender: z.string(),
+  age: z.coerce.number(),
+});
 
 function App() {
   const [profileNum, updateProfileNum] = useState<number>(0);
   const [showRules, updateShowRules] = useState<boolean>(true);
   const [profile] = useState(Profiles.profiles);
-
+  const [score, updateScore] = useState(0);
+  const [showScore, updateShowScore] = useState(false);
+  const [showForm, updateShowForm] = useState(false);
+  const [showQuiz, updateShowQuiz] = useState(true);
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+  });
   const nextProfile = () => {
-    updateProfileNum((prev) => prev + 1);
+    if (profileNum !== profile.length - 1) {
+      updateProfileNum((prev) => prev + 1);
+    } else {
+      updateShowQuiz(false);
+    }
   };
 
   const hideRules = () => {
@@ -44,9 +72,90 @@ function App() {
     });
   };
 
+  const scoreCard = () => (
+    <Card className="w-64 space-y-5 p-10">
+      <CardHeader>Thank you for participating!</CardHeader>
+      <CardContent>You got: {(score / profile.length) * 100}%</CardContent>
+    </Card>
+  );
+
+  useEffect(() => {
+    if (profileNum === profile.length - 1) {
+      updateShowForm(true);
+    }
+    console.log(profileNum);
+  }, [profileNum]);
+
+  const submit = async (values: z.infer<typeof formSchema>) => {
+    await supabaseClient.from("respondants").insert({
+      age: values.age,
+      gender: values.gender,
+      score: score,
+    });
+    updateShowForm(false);
+    updateShowScore(true);
+  };
+
+  const RespondantForm = () => (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(submit)}
+        className="w-64 space-y-5 rounded-md border px-10 py-10"
+      >
+        <h5>A quick form to fill out</h5>
+        <FormField
+          control={form.control}
+          name="age"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Age</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="gender"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Gender</FormLabel>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="flex flex-col space-y-1"
+                >
+                  <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem value="M" />
+                    </FormControl>
+                    <FormLabel className="font-normal">Male</FormLabel>
+                  </FormItem>
+                  <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem value="F" />
+                    </FormControl>
+                    <FormLabel className="font-normal">Female</FormLabel>
+                  </FormItem>
+                </RadioGroup>
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <Button className="w-full">Submit</Button>
+      </form>
+    </Form>
+  );
+
   return (
     <>
-      <div className="grid min-h-screen place-items-center align-middle">
+      <div
+        className="grid min-h-screen place-items-center align-middle"
+        style={{ display: showQuiz ? "" : "none" }}
+      >
         <div
           className="absolute z-10 h-screen w-screen bg-[rgba(0,0,0,0.2)] saturate-150 backdrop-blur-xl"
           style={{ display: showRules ? "block" : "none" }}
@@ -60,10 +169,10 @@ function App() {
               <span className="text-4xl">Rules</span>
             </CardHeader>
             <CardContent>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Recusandae ad veritatis quas tenetur velit alias dolore
-              praesentium, asperiores animi at perspiciatis esse officiis
-              accusantium aperiam cumque, blanditiis nemo quia ducimus.
+              The goal is to judge each profile and see if the person is someone
+              you would feel safe going on a date with. If you do click on the{" "}
+              <span className="text-green-500">Match</span> button, if not click
+              on <span className="text-red-500">Reject</span>.
             </CardContent>
             <CardFooter>
               <Button onClick={hideRules} className="w-full bg-orange-300">
@@ -73,7 +182,7 @@ function App() {
           </Card>
         </div>
         <Progress
-          value={(profileNum / profile.length) * 100}
+          value={(profileNum / (profile.length - 1)) * 100}
           className="absolute top-0 z-0"
         />
         <Card className="w-11/12 sm:w-10/12 md:w-7/12 lg:w-5/12">
@@ -115,6 +224,9 @@ function App() {
                       profile[profileNum].category as "Good" | "Bad",
                     );
                     nextProfile();
+                    if (profile[profileNum].category === "Bad") {
+                      updateScore((prev) => prev + 1);
+                    }
                   }}
                 >
                   Reject <X />
@@ -128,6 +240,9 @@ function App() {
                       profile[profileNum].category as "Good" | "Bad",
                     );
                     nextProfile();
+                    if (profile[profileNum].category === "Good") {
+                      updateScore((prev) => prev + 1);
+                    }
                   }}
                 >
                   Match <Check />
@@ -136,6 +251,18 @@ function App() {
             </div>
           </CardContent>
         </Card>
+      </div>
+      <div
+        style={{ display: showForm ? "" : "none" }}
+        className="grid min-h-screen min-w-full place-items-center align-middle"
+      >
+        {RespondantForm()}
+      </div>
+      <div
+        style={{ display: showScore ? "" : "none" }}
+        className="grid min-h-screen min-w-full place-items-center align-middle"
+      >
+        {scoreCard()}
       </div>
     </>
   );

@@ -12,24 +12,21 @@ export interface Database {
       respondants: {
         Row: {
           age: number
-          correct_choices: number
           gender: string
           id: number
-          incorrect_choices: number
+          score: number
         }
         Insert: {
           age: number
-          correct_choices: number
           gender: string
           id?: number
-          incorrect_choices: number
+          score: number
         }
         Update: {
           age?: number
-          correct_choices?: number
           gender?: string
           id?: number
-          incorrect_choices?: number
+          score?: number
         }
         Relationships: []
       }
